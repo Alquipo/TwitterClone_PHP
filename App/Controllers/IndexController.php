@@ -14,6 +14,11 @@
 
         }
 
+        public function inscreverse(){
+            $this->render('inscreverse');
+
+        }
+
        
 
     }
