@@ -6,7 +6,7 @@
             public static function getDb(){
                 try {
                     $conn = new \PDO(
-                        "mysql:host=localhost;dbname=udemy_mvc;charset=utf8",
+                        "mysql:host=localhost;dbname=udemy_twitter_clone;charset=utf8",
                         "root",
                         ""
                     );
