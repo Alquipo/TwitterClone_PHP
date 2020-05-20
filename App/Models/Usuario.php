@@ -82,9 +82,18 @@
         }
         //metodo para pesquisa no banco de dados
         public function getAll(){
-            $query = "select id, nome, email from usuarios where nome like :nome";
+            $query = "
+            select 
+                id, nome, email 
+             from 
+                usuarios 
+             where 
+                nome like :nome and id != :id_usuario
+            ";
             $stmt = $this->db->prepare($query);
             $stmt->bindValue(':nome', '%'.$this->__get('nome').'%');
+            $stmt->bindValue(':id_usuario', $this->__get('id')); //usado para nao pesquisar o id da sessao logado
+
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);

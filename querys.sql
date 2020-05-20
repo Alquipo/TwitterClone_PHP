@@ -18,3 +18,11 @@ create table tweets(
 	tweet varchar(140) not null,
 	data datetime default current_timestamp
 );
+
+use twitter_clone;
+
+create table usuarios_seguidores(
+	id int not null primary key auto_increment,
+	id_usuario int not null,
+	id_usuario_seguindo int not null
+);

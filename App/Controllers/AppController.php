@@ -62,6 +62,7 @@
             if($pesquisarPor != ''){
                 $usuario = Container::getModel('Usuario');
                 $usuario->__set('nome', $pesquisarPor);
+                $usuario->__set('id', $_SESSION['id']);//usado para nao mostrar o usuario da sessao
                 $usuarios = $usuario->getAll();
 
                
