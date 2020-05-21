@@ -127,8 +127,42 @@
             
         }
 
+        //metodo para informações do usuario
+        public function getInfoUsuario(){
+            $query = "select nome from usuarios where id = :id_usuario";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id_usuario', $this->__get('id'));
+            $stmt->execute();
 
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }
+        //metodo total tweets
+        public function getTotaTweets(){
+            $query = "select count(*) as total_tweet from tweets where id_usuario = :id_usuario";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id_usuario', $this->__get('id'));
+            $stmt->execute();
 
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }
+        //metoto de usuarios que estamos seguindo
+        public function getTotaSeguindo(){
+            $query = "select count(*) as total_seguindo from usuarios_seguidores where id_usuario = :id_usuario";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id_usuario', $this->__get('id'));
+            $stmt->execute();
+
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }
+        //metodo de seguidores
+        public function getTotaSeguidores(){
+            $query = "select count(*) as total_seguidores from usuarios_seguidores where id_usuario_seguindo = :id_usuario";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id_usuario', $this->__get('id'));
+            $stmt->execute();
+
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }
 
         
     }
