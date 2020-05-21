@@ -30,18 +30,35 @@
             
             
             $tweet =  Container::getModel('Tweet');
-
+            
             $tweet->__set('tweet', $_POST['tweet']);
             $tweet->__set('id_usuario', $_SESSION['id']);
 
             $tweet->salvar();
 
             header('Location: /timeline');
-
-            
-
                    
         }
+
+        public function deletarTweet(){
+            
+            $this->validaAutenticacao();
+            
+            
+            $tweet =  Container::getModel('Tweet');
+
+            // print_r($_POST);
+
+            $tweet->__set('id', $_POST['id_tweet']);
+            $tweet->__set('id_usuario', $_SESSION['id']);
+
+           // print_r($tweet);
+            $tweet->deletar();
+
+            header('Location: /timeline');
+                   
+        }
+
         public function validaAutenticacao(){
             session_start();
            

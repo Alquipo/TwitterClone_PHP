@@ -33,6 +33,17 @@
             return $this;
         }
 
+        public function deletar(){
+
+            $query = "delete from tweets where id = :id_tweet && id_usuario = :id_usuario";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue('id_tweet', $this->__get('id'));
+            $stmt->bindValue('id_usuario', $this->__get('id_usuario'));
+            $stmt->execute();
+
+            return $this;
+        }
+
         //recuperar os registros
         public function getAll(){
             $query="
@@ -55,7 +66,7 @@
 
         }
 
-
+        
 
 
 

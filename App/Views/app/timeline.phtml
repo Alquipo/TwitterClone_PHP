@@ -79,9 +79,10 @@
 
 						<!-- remover o botao remover para exibição de twitter de quem nao e o autenticado -->
 						<?php  if($tweet['id_usuario'] == $_SESSION['id'])  {?>
-							<form>
+							<form method="POST" action="/deletarTweet">
 								<div class="col d-flex justify-content-end">
-									<button type="submit" class="btn btn-danger"><small>Remover</small></button>
+									<input type="hidden" value="<?= $tweet['id'];?>" name="id_tweet">
+									<button  type="submit" class="btn btn-danger"><small>Remover</small></button>
 								</div>
 							</form>
 						<?php }?>
